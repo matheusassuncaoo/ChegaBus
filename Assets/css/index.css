@@ -1,0 +1,88 @@
+@import url('global.css');
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    transition: 1s;
+}
+
+.splash img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1; /* Ajuste para garantir que a imagem seja visível */
+}
+
+.splash.active {
+    bottom: 0;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+.splash.fade {
+    bottom: 150px;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
+
+.screenpage-one h1, .screenpage-one h2, .screenpage-two h1, .screenpage-two h2 {
+    font-weight: 800;
+    font-size: 72px;
+}
+
+.screenpage-one p, .screenpage-two p {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.screenpage-one.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+
+.screenpage-two.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+.screenpage-one.disabled{
+    display: none;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
+
+
+.screenpage-two.disabled{
+    display: none;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
