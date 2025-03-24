@@ -19,65 +19,52 @@
         <img src="./Assets/images/Logo.png" alt="Logo" width="256px" height="318px">
     </div>
 
-    <div class="screenpage-one d-flex align-items-center justify-content-center min-vh-100 bg-white">
-        <div class="text-center">
-            <div class="mb-4">
-                <img src="./Assets/images/MeninaViajar.png" alt="Menina Viajando" class="img-fluid"
-                    style="max-width: 600px; height: auto;">
-            </div>
-            <h1 class="h3 font-weight-bold text-dark">
-                Viaje o mundo
-            </h1>
-            <h2 class="h3 font-weight-bold text-dark">
-                facilmente
-            </h2>
-            <p class="text-muted">
-                para aonde quiser
-            </p>
-            <div class="d-flex justify-content-center align-items-center mt-4">
-                <div class="d-flex justify-content-center align-items-center mr-3">
-                    <div class="dot bg-primary mr-2"></div>
-                    <div class="dot bg-light"></div>
+    <div class="screen-container vh-100 d-flex justify-content-center align-items-center">
+        <!-- Screenpage One -->
+        <div class="screenpage-one text-center w-100">
+            <div class="content">
+                <img alt="Menina Viajando" class="img-fluid mb-4" src="./Assets/images/MeninaViajar.png" style="max-width: 600px; height: auto;">
+                <h1 class="display-4 fw-bold">Viaje o mundo</h1>
+                <h2 class="display-4 fw-bold">facilmente</h2>
+                <p class="lead text-muted fs-4">para onde quiser</p>
+                <div class="d-flex justify-content-center align-items-center mt-4 gap-3">
+                    <div class="bg-primary rounded-circle" style="width: 12px; height: 12px;"></div>
+                    <div class="bg-secondary rounded-circle" style="width: 12px; height: 12px;"></div>
                 </div>
-                <button class="btn btn-dark rounded-circle" id="next-slide-one">
-                    <i data-feather="chevron-right"></i>
+                <button id="next-slide-one" class="btn btn-dark rounded-circle mt-4" style="width: 60px; height: 60px;">
+                    <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Screenpage Two -->
+        <div class="screenpage-two text-center w-100" style="display: none;">
+            <div class="content">
+                <img alt="Grupo de Pessoas" class="img-fluid mb-4" src="./Assets/images/GrupoDePessoas.png" style="max-width: 600px; height: auto;">
+                <h1 class="display-4 fw-bold">Da maneira que</h1>
+                <h2 class="display-4 fw-bold">você quiser</h2>
+                <p class="lead text-muted fs-4">até o seu destino</p>
+                <div class="d-flex justify-content-center align-items-center mt-4 gap-3">
+                    <div class="bg-secondary rounded-circle" style="width: 12px; height: 12px;"></div>
+                    <div class="bg-primary rounded-circle" style="width: 12px; height: 12px;"></div>
+                </div>
+                <button id="next-slide-two" class="btn btn-dark rounded-circle mt-4" style="width: 60px; height: 60px;">
+                    <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="screenpage-two d-flex align-items-center justify-content-center min-vh-100 bg-white">
-        <div class="text-center">
-            <div class="mb-4">
-                <img src="./Assets/images/GrupoDePessoas.png" alt="Grupo de Pessoas Viajando" class="img-fluid"
-                    style="max-width: 600px; height: auto;">
-            </div>
-            <h1 class="h3 font-weight-bold text-dark">
-                De maneira que
-            </h1>
-            <h2 class="h3 font-weight-bold text-dark">
-                você quiser
-            </h2>
-            <p class="text-muted">
-                até ao seu destino
-            </p>
-            <div class="d-flex justify-content-center align-items-center mt-4">
-                <div class="d-flex justify-content-center align-items-center mr-3">
-                    <div class="dot bg-light mr-2"></div>
-                    <div class="dot bg-primary"></div>
-                </div>
-                <button class="btn btn-dark rounded-circle" id="next-slide-two">
-                    <a href="./Assets/Pages/login.html"> </a>
-                    <i data-feather="chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <script src="./Assets/js/splashscreen.js"></script>
     <script>
         feather.replace();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 </body>
 
 </html>

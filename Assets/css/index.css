@@ -43,46 +43,14 @@ body {
     transition: ease-in-out 0.5s;
 }
 
-.screenpage-one h1, .screenpage-one h2, .screenpage-two h1, .screenpage-two h2 {
-    font-weight: 800;
-    font-size: 72px;
-}
-
-.screenpage-one p, .screenpage-two p {
-    font-weight: 400;
-    font-size: 24px;
-}
-
-.screenpage-one.active{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 1;
-    transition: ease-in-out 0.5s;
-}
-
-
-.screenpage-two.active{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 1;
-    transition: ease-in-out 0.5s;
-}
-
-.screenpage-one.disabled{
-    display: none;
+.screenpage-one, .screenpage-two {
     opacity: 0;
-    transition: ease-in-out 0.5s;
-}
-
-
-.screenpage-two.disabled{
     display: none;
-    opacity: 0;
-    transition: ease-in-out 0.5s;
+    transition: opacity 0.5s ease-in-out;
 }
+
+.screenpage-one.active, .screenpage-two.active {
+    opacity: 1;
+    display: flex;
+}
+
