@@ -16,15 +16,16 @@
         <!-- Sidebar -->
         <div class="bg-light p-4" style="width: 600px;">
             <div class="text-center mb-5">
-                <img alt="ChegaBus Logo" class="mb-3" src="/Assets/images/Logo_Blue.png" style="width: 64px; height: 80px;"/>
-           
+                <a href="/Assets/Pages/dashboard.html">
+                    <img alt="ChegaBus Logo" class="mb-3" src="/Assets/images/Logo_Blue.png" style="width: 64px; height: 80px;"/>
+                </a>
             </div>
             <nav class="nav flex-column">
-                <a class="nav-link text-dark mb-3" href="#">
+                <a class="nav-link text-dark mb-3" href="/Assets/Pages/dashboard.html">
                     <i data-feather="home" class="me-2"></i>
                     Dashboard
                 </a>
-                <a class="nav-link text-dark mb-3" href="#">
+                <a class="nav-link text-dark mb-3" href="/Assets/Pages/passagens.html">
                     <i data-feather="arrow-right" class="me-2"></i>
                     Tickets
                 </a>
@@ -45,18 +46,20 @@
             <div class="card p-4 mb-5 shadow-sm">
                 <form>
                     <div class="row g-3">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control bg-light" placeholder="Ponto de Partida">
+                        <div class="col-md-4 position-relative">
+                            <input type="text" id="pontoPartida" class="form-control bg-light" placeholder="Ponto de Partida">
+                            <ul id="sugestoesPartida" class="list-group position-absolute d-none"></ul>
                         </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control bg-light" placeholder="Ponto de Chegada">
+                        <div class="col-md-4 position-relative">
+                            <input type="text" id="pontoChegada" class="form-control bg-light" placeholder="Ponto de Chegada">
+                            <ul id="sugestoesChegada" class="list-group position-absolute d-none"></ul>
                         </div>
                         <div class="col-md-4">
                             <input type="date" class="form-control bg-light" placeholder="Data da Viagem">
                         </div>
                     </div>
                     <div class="text-end mt-4">
-                        <button type="submit" class="btn btn-primary px-5">Buscar Ônibus</button>
+                        <button type="button" id="buscarPassagens" class="btn btn-primary px-5">Buscar Ônibus</button>
                     </div>
                 </form>
             </div>
@@ -67,41 +70,41 @@
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Cuiabá to Sinop">
+                            <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSIRZad29-09yETNiYgs1fFO_Y4C6X7eVSAkL0Lzktg39CKwCDUFTbZyWzPKb79dgoJxJ5rSbcnry6-COMtK0v4YiShzlOQO9e01tk_lA" class="card-img-top" alt="Cuiabá to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Sinop, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT" data-destino="Sinop, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Cuiabá to Primavera do Leste">
+                            <img src="https://lh5.googleusercontent.com/p/AF1QipO8EnXFe3HeDKnofkFguWtyS5GE2cZ6Ewps1Gms=w675-h390-n-k-no" class="card-img-top" alt="Cuiabá to Primavera do Leste">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Primavera do Leste, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT" data-destino="Primavera do Leste, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Nobres to Sinop">
+                            <img src="https://lh5.googleusercontent.com/p/AF1QipPKHL4cBZz160xfQl_9UHLfc9Tmjx_q3Fb0KL5P=w675-h390-n-k-no" class="card-img-top" alt="Nobres to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Nobres, MT → Sinop, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Nobres, MT" data-destino="Sinop, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Cuiabá to Alto Araguaia">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSllQqn_PXGcpMI6Lnkkg0f8w35-N0X6WQJxx7kavOvAGe9vMmTGKOefCkPQNsqTDklTL-f5O5pM5g571aCl-v2_p5LR35waSDeupXf2A" class="card-img-top" alt="Cuiabá to Alto Araguaia">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Alto Araguaia, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT" data-destino="Alto Araguaia, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
@@ -114,7 +117,7 @@
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Cuiabá to Sinop">
+                            <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRRZu_f9rfpXIx5A8JBiZG9_808KB0tcPVHKkcj4BzwZmsgiDDjkbRjN6j1Y69ZSoFGAMtXqhei83iWtHV7L55w6FufahV0Mw2tuF9CNek" class="card-img-top" alt="Cuiabá to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Sinop, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
@@ -124,7 +127,7 @@
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Cuiabá to Primavera do Leste">
+                            <img src="https://lh5.googleusercontent.com/p/AF1QipO8EnXFe3HeDKnofkFguWtyS5GE2cZ6Ewps1Gms=w675-h390-n-k-no" class="card-img-top" alt="Cuiabá to Primavera do Leste">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Primavera do Leste, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
@@ -134,7 +137,7 @@
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Nobres to Sinop">
+                            <img src="https://lh5.googleusercontent.com/p/AF1QipPKHL4cBZz160xfQl_9UHLfc9Tmjx_q3Fb0KL5P=w675-h390-n-k-no" class="card-img-top" alt="Nobres to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Nobres, MT → Sinop, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
@@ -144,7 +147,7 @@
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://placehold.co/300x150" class="card-img-top" alt="Cuiabá to Alto Araguaia">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSllQqn_PXGcpMI6Lnkkg0f8w35-N0X6WQJxx7kavOvAGe9vMmTGKOefCkPQNsqTDklTL-f5O5pM5g571aCl-v2_p5LR35waSDeupXf2A" class="card-img-top" alt="Cuiabá to Alto Araguaia">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Alto Araguaia, MT</h5>
                                 <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
@@ -154,6 +157,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Ticket Listings -->
+            <div id="ticket-listings" class="row row-cols-1 row-cols-md-3 g-4"></div>
         </div>
     </div>
 
@@ -164,5 +170,6 @@
     <script>
         feather.replace();
     </script>
+    <script src="/Assets/js/dashboard.js"></script>
 </body>
 </html>

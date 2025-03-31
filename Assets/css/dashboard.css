@@ -15,3 +15,16 @@ body {
     background-color: rgba(13, 110, 253, 0.1);
     border-radius: 5px; 
 }
+
+#sugestoesPartida,
+#sugestoesChegada {
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: 100%;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
