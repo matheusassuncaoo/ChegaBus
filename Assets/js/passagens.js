@@ -1,18 +1,60 @@
+// Dados de exemplo para as passagens
+const passagens = [
+    {
+        empresa: "Satélite Azul",
+        modelo: "Volvo Multi Axle Semi Sleeper (2+2)",
+        partida: "6:50AM",
+        chegada: "12:15PM",
+        origem: "Cuiabá, MT",
+        destino: "Sinop, MT",
+        preco: "135",
+        desconto: "-40% OFF"
+    },
+    {
+        empresa: "Satélite Azul",
+        modelo: "Marcopolo Paradiso 1800 DD",
+        partida: "6:50AM",
+        chegada: "14:55PM",
+        origem: "Cuiabá, MT",
+        destino: "Primavera do Leste, MT",
+        preco: "245",
+        desconto: "-20% OFF"
+    },
+    {
+        empresa: "Rio Novo",
+        modelo: "Volvo B9R 340",
+        partida: "17:50PM",
+        chegada: "23:50PM",
+        origem: "Nobres, MT",
+        destino: "Sinop, MT",
+        preco: "115",
+        desconto: "-10% OFF"
+    }
+];
+
+// Filtra as passagens com base nos dados da rota
+function filtrarPassagens(passagensArray, origem, destino) {
+    return passagensArray.filter((passagem) =>
+        passagem.origem.toLowerCase() === origem.toLowerCase() &&
+        passagem.destino.toLowerCase() === destino.toLowerCase()
+    );
+}
+
 // Renderiza as passagens no HTML
-function renderizarPassagens(passagens) {
+function renderizarPassagens(passagensFiltradas) {
     const ticketListings = document.getElementById("ticket-listings");
     ticketListings.innerHTML = ""; // Limpa o conteúdo existente
 
-    if (passagens.length === 0) {
+    if (passagensFiltradas.length === 0) {
         ticketListings.innerHTML = `<p class="text-center">Nenhuma passagem encontrada para os critérios selecionados.</p>`;
         return;
     }
 
-    passagens.forEach((passagem, index) => {
+    passagensFiltradas.forEach((passagem, index) => {
         const card = document.createElement("div");
         card.classList.add("col-12", "mb-3");
 
-        // Adiciona um ID único ao botão "Reservar" para facilitar a manipulação
+        // Cria um ID único para o botão "Reservar"
         const buttonId = `reservar-btn-${index}`;
 
         card.innerHTML = `
@@ -80,18 +122,53 @@ function renderizarPassagens(passagens) {
 
         ticketListings.appendChild(card);
 
-        // Adiciona o evento de clique ao botão "Reservar"
+        // Adiciona o evento de clique ao botão "Reservar" (na seção de assentos)
         const reservarButton = document.getElementById(buttonId);
         if (reservarButton) {
             reservarButton.addEventListener("click", () => {
-                try {
-                    localStorage.setItem("passagemSelecionada", JSON.stringify(passagem));
-                    window.location.href = "/Assets/Pages/pagamento.html";
-                } catch (error) {
-                    console.error("Erro ao salvar a passagem no localStorage:", error);
-                    alert("Ocorreu um erro ao tentar reservar a passagem. Tente novamente.");
-                }
+                // Salva os dados da passagem selecionada no localStorage
+                localStorage.setItem("passagemSelecionada", JSON.stringify(passagem));
+                // Redireciona para a página de pagamento
+                window.location.href = "/Assets/Pages/pagamento.html";
             });
         }
     });
 }
+
+// Inicializa a página de passagens
+function inicializarPagina() {
+    // Recupera os dados da rota que foram salvos no Dashboard
+    const viagemSelecionada = JSON.parse(localStorage.getItem("viagemSelecionada"));
+
+    if (!viagemSelecionada) {
+        document.getElementById("ticket-listings").innerHTML = `<p class="text-center">Selecione uma rota no dashboard para ver as passagens.</p>`;
+        return;
+    }
+
+    // Filtra as passagens com base na origem e destino selecionados
+    const passagensFiltradas = filtrarPassagens(passagens, viagemSelecionada.origem, viagemSelecionada.destino);
+    renderizarPassagens(passagensFiltradas);
+}
+
+// Configura o formulário de busca na página de passagens
+document.querySelector("form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const origem = document.querySelector('#pontoPartida').value;
+    const destino = document.querySelector('#pontoChegada').value;
+    const data = document.querySelector('#dataViagem').value;
+
+    if (!origem || !destino || !data) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    // Salva os dados da busca no localStorage
+    localStorage.setItem("viagemSelecionada", JSON.stringify({ origem, destino, data }));
+
+    // Filtra e renderiza as passagens
+    const passagensFiltradas = filtrarPassagens(passagens, origem, destino);
+    renderizarPassagens(passagensFiltradas);
+});
+
+// Chama a função de inicialização ao carregar a página
+document.addEventListener("DOMContentLoaded", inicializarPagina);
