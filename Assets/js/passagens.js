@@ -32,22 +32,19 @@ const passagens = [
     }
 ];
 
-// Captura os dados do localStorage
-const rotaSelecionada = JSON.parse(localStorage.getItem("rotaSelecionada"));
-
-// Filtra as passagens com base nos dados da rota
+// Filtra as passagens
 function filtrarPassagens(passagens, origem, destino) {
     return passagens.filter(
         (passagem) =>
-            passagem.origem.toLowerCase().includes(origem.toLowerCase()) &&
-            passagem.destino.toLowerCase().includes(destino.toLowerCase())
+            passagem.origem.toLowerCase() === origem.toLowerCase() &&
+            passagem.destino.toLowerCase() === destino.toLowerCase()
     );
 }
 
 // Renderiza as passagens no HTML
 function renderizarPassagens(passagens) {
     const ticketListings = document.getElementById("ticket-listings");
-    ticketListings.innerHTML = ""; // Limpa o conteúdo existente
+    ticketListings.innerHTML = "";
 
     if (passagens.length === 0) {
         ticketListings.innerHTML = `<p class="text-center">Nenhuma passagem encontrada para os critérios selecionados.</p>`;
@@ -75,20 +72,42 @@ function renderizarPassagens(passagens) {
     });
 }
 
-// Inicializa a página de passagens
+// Inicializa a página
 function inicializarPagina() {
-    if (!rotaSelecionada) {
-        alert("Nenhuma rota selecionada.");
+    const viagemSelecionada = JSON.parse(localStorage.getItem("viagemSelecionada"));
+
+    if (!viagemSelecionada) {
+        document.getElementById("ticket-listings").innerHTML = `<p class="text-center">Selecione uma rota no dashboard para ver as passagens.</p>`;
         return;
     }
 
     const passagensFiltradas = filtrarPassagens(
         passagens,
-        rotaSelecionada.origem,
-        rotaSelecionada.destino
+        viagemSelecionada.origem,
+        viagemSelecionada.destino
     );
     renderizarPassagens(passagensFiltradas);
 }
 
-// Chama a função de inicialização
+// Configura o formulário de busca no passagens.html
+document.querySelector("form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const origem = document.querySelector('input[placeholder="Ponto de Partida"]').value;
+    const destino = document.querySelector('input[placeholder="Ponto de Chegada"]').value;
+    const data = document.querySelector('input[type="date"]').value;
+
+    if (!origem || !destino || !data) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    // Salva no localStorage
+    localStorage.setItem("viagemSelecionada", JSON.stringify({ origem, destino, data }));
+
+    // Filtra e renderiza
+    const passagensFiltradas = filtrarPassagens(passagens, origem, destino);
+    renderizarPassagens(passagensFiltradas);
+});
+
+// Chama a inicialização ao carregar a página
 inicializarPagina();

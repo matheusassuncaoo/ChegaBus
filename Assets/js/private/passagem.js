@@ -32,66 +32,89 @@ const passagens = [
     }
 ];
 
-// Função para obter os parâmetros da URL
-function obterParametrosURL() {
-    const params = new URLSearchParams(window.location.search);
-    return {
-        partida: params.get("partida"),
-        chegada: params.get("chegada"),
-        data: params.get("data")
-    };
-}
-
-// Filtra as passagens com base nos parâmetros
-function filtrarPassagens(passagens, partida, chegada) {
-    return passagens.filter(
-        (passagem) =>
-            passagem.origem.toLowerCase().includes(partida.toLowerCase()) &&
-            passagem.destino.toLowerCase().includes(chegada.toLowerCase())
+// Função para filtrar passagens por origem e destino
+function filtrarPassagens(origem, destino) {
+    // Se não houver origem e destino, retorna todas as passagens
+    if (!origem || !destino) {
+        return passagens;
+    }
+    
+    // Caso contrário, filtra as passagens
+    return passagens.filter(passagem => 
+        passagem.origem.toLowerCase() === origem.toLowerCase() &&
+        passagem.destino.toLowerCase() === destino.toLowerCase()
     );
 }
 
-// Renderiza as passagens no HTML
-function renderizarPassagens(passagens) {
-    const ticketListings = document.getElementById("ticket-listings");
-    ticketListings.innerHTML = ""; // Limpa o conteúdo existente
+// Função para renderizar as passagens
+function renderizarPassagens(passagensFiltradas) {
+    const container = document.getElementById("ticket-listings");
+    container.innerHTML = "";
 
-    if (passagens.length === 0) {
-        ticketListings.innerHTML = `<p class="text-center">Nenhuma passagem encontrada para os critérios selecionados.</p>`;
+    if (passagensFiltradas.length === 0) {
+        container.innerHTML = `
+            <div class="col-12 text-center">
+                <h4>Nenhuma passagem encontrada para esta rota.</h4>
+            </div>
+        `;
         return;
     }
 
-    passagens.forEach((passagem) => {
+    passagensFiltradas.forEach(passagem => {
         const card = document.createElement("div");
-        card.classList.add("col");
-
+        card.className = "col";
         card.innerHTML = `
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">${passagem.origem} → ${passagem.destino}</h5>
-                    <p class="text-muted small">${passagem.empresa} - ${passagem.modelo}</p>
-                    <p class="mb-1"><strong>Partida:</strong> ${passagem.partida}</p>
-                    <p class="mb-1"><strong>Chegada:</strong> ${passagem.chegada}</p>
-                    <p class="mb-1"><strong>Preço:</strong> R$ ${passagem.preco}</p>
-                    <button class="btn btn-primary w-100">Reservar</button>
+                    <p class="text-muted mb-2">${passagem.empresa} - ${passagem.modelo}</p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <p class="mb-0"><strong>Partida:</strong> ${passagem.partida}</p>
+                            <p class="mb-0"><strong>Chegada:</strong> ${passagem.chegada}</p>
+                        </div>
+                        <div class="text-end">
+                            <p class="mb-0 text-success">${passagem.desconto}</p>
+                            <p class="mb-0"><strong>R$ ${passagem.preco}</strong></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100">Comprar</button>
                 </div>
             </div>
         `;
-
-        ticketListings.appendChild(card);
+        container.appendChild(card);
     });
 }
 
-// Inicializa a página de passagens
-function inicializarPagina() {
-    const parametros = obterParametrosURL();
-    const passagensFiltradas = filtrarPassagens(
-        passagens,
-        parametros.partida,
-        parametros.chegada
-    );
-    renderizarPassagens(passagensFiltradas);
+// Função para capturar parâmetros da URL
+function obterParametrosURL() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        origem: params.get("origem"),
+        destino: params.get("destino"),
+        data: params.get("data")
+    };
 }
 
-// Chama a função de inicialização
-inicializarPagina();
+// Inicializa a página
+function inicializarPagina() {
+    const parametros = obterParametrosURL();
+    
+    // Filtra e exibe as passagens (mesmo sem parâmetros)
+    const passagensFiltradas = filtrarPassagens(parametros.origem, parametros.destino);
+    renderizarPassagens(passagensFiltradas);
+
+    // Atualiza os campos do formulário apenas se houver parâmetros
+    if (parametros.origem) {
+        document.querySelector('input[placeholder="Ponto de Partida"]').value = parametros.origem;
+    }
+    if (parametros.destino) {
+        document.querySelector('input[placeholder="Ponto de Chegada"]').value = parametros.destino;
+    }
+    if (parametros.data) {
+        document.querySelector('input[type="date"]').value = parametros.data;
+    }
+}
+
+// Inicia a página quando carregar
+document.addEventListener("DOMContentLoaded", inicializarPagina);

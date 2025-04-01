@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="/Assets/css/dashboard.css">
     <!-- Bootstrap CSS -->
@@ -11,13 +12,15 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
+
 <body>
     <div class="d-flex min-vh-100">
         <!-- Sidebar -->
         <div class="bg-light p-4" style="width: 600px;">
             <div class="text-center mb-5">
                 <a href="/Assets/Pages/dashboard.html">
-                    <img alt="ChegaBus Logo" class="mb-3" src="/Assets/images/Logo_Blue.png" style="width: 64px; height: 80px;"/>
+                    <img alt="ChegaBus Logo" class="mb-3" src="/Assets/images/Logo_Blue.png"
+                        style="width: 64px; height: 80px;" />
                 </a>
             </div>
             <nav class="nav flex-column">
@@ -47,11 +50,13 @@
                 <form>
                     <div class="row g-3">
                         <div class="col-md-4 position-relative">
-                            <input type="text" id="pontoPartida" class="form-control bg-light" placeholder="Ponto de Partida">
+                            <input type="text" id="pontoPartida" class="form-control bg-light"
+                                placeholder="Ponto de Partida">
                             <ul id="sugestoesPartida" class="list-group position-absolute d-none"></ul>
                         </div>
                         <div class="col-md-4 position-relative">
-                            <input type="text" id="pontoChegada" class="form-control bg-light" placeholder="Ponto de Chegada">
+                            <input type="text" id="pontoChegada" class="form-control bg-light"
+                                placeholder="Ponto de Chegada">
                             <ul id="sugestoesChegada" class="list-group position-absolute d-none"></ul>
                         </div>
                         <div class="col-md-4">
@@ -70,41 +75,53 @@
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSIRZad29-09yETNiYgs1fFO_Y4C6X7eVSAkL0Lzktg39CKwCDUFTbZyWzPKb79dgoJxJ5rSbcnry6-COMtK0v4YiShzlOQO9e01tk_lA" class="card-img-top" alt="Cuiabá to Sinop">
+                            <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSIRZad29-09yETNiYgs1fFO_Y4C6X7eVSAkL0Lzktg39CKwCDUFTbZyWzPKb79dgoJxJ5rSbcnry6-COMtK0v4YiShzlOQO9e01tk_lA"
+                                class="card-img-top" alt="Cuiabá to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Sinop, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT" data-destino="Sinop, MT">Reservar</button>
+                                <p class="card-text text-muted small">Viagem confortável entre a capital e uma das
+                                    cidades mais importantes do norte do estado.</p>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT"
+                                    data-destino="Sinop, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipO8EnXFe3HeDKnofkFguWtyS5GE2cZ6Ewps1Gms=w675-h390-n-k-no" class="card-img-top" alt="Cuiabá to Primavera do Leste">
+                            <img src="https://lh5.googleusercontent.com/p/AF1QipO8EnXFe3HeDKnofkFguWtyS5GE2cZ6Ewps1Gms=w675-h390-n-k-no"
+                                class="card-img-top" alt="Cuiabá to Primavera do Leste">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Primavera do Leste, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT" data-destino="Primavera do Leste, MT">Reservar</button>
+                                <p class="card-text text-muted small">Uma rota rápida e estratégica para quem deseja
+                                    explorar o agronegócio e a natureza da região.</p>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT"
+                                    data-destino="Primavera do Leste, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipPKHL4cBZz160xfQl_9UHLfc9Tmjx_q3Fb0KL5P=w675-h390-n-k-no" class="card-img-top" alt="Nobres to Sinop">
+                            <img src="https://lh5.googleusercontent.com/p/AF1QipPKHL4cBZz160xfQl_9UHLfc9Tmjx_q3Fb0KL5P=w675-h390-n-k-no"
+                                class="card-img-top" alt="Nobres to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Nobres, MT → Sinop, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Nobres, MT" data-destino="Sinop, MT">Reservar</button>
+                                <p class="card-text text-muted small">Descubra a rota entre Nobres e Sinop, combinando
+                                    natureza exuberante e crescimento urbano.</p>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Nobres, MT"
+                                    data-destino="Sinop, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSllQqn_PXGcpMI6Lnkkg0f8w35-N0X6WQJxx7kavOvAGe9vMmTGKOefCkPQNsqTDklTL-f5O5pM5g571aCl-v2_p5LR35waSDeupXf2A" class="card-img-top" alt="Cuiabá to Alto Araguaia">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSllQqn_PXGcpMI6Lnkkg0f8w35-N0X6WQJxx7kavOvAGe9vMmTGKOefCkPQNsqTDklTL-f5O5pM5g571aCl-v2_p5LR35waSDeupXf2A"
+                                class="card-img-top" alt="Cuiabá to Alto Araguaia">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Alto Araguaia, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT" data-destino="Alto Araguaia, MT">Reservar</button>
+                                <p class="card-text text-muted small">Uma viagem tranquila entre Cuiabá e a região sul
+                                    do estado, perfeita para negócios ou lazer.</p>
+                                <button class="btn btn-primary w-100 reservar-btn" data-origem="Cuiabá, MT"
+                                    data-destino="Alto Araguaia, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
@@ -117,46 +134,20 @@
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
                         <div class="card h-100 shadow-sm">
-                            <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRRZu_f9rfpXIx5A8JBiZG9_808KB0tcPVHKkcj4BzwZmsgiDDjkbRjN6j1Y69ZSoFGAMtXqhei83iWtHV7L55w6FufahV0Mw2tuF9CNek" class="card-img-top" alt="Cuiabá to Sinop">
+                            <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRRZu_f9rfpXIx5A8JBiZG9_808KB0tcPVHKkcj4BzwZmsgiDDjkbRjN6j1Y69ZSoFGAMtXqhei83iWtHV7L55w6FufahV0Mw2tuF9CNek"
+                                class="card-img-top" alt="Cuiabá to Sinop">
                             <div class="card-body">
                                 <h5 class="card-title">Cuiabá, MT → Sinop, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipO8EnXFe3HeDKnofkFguWtyS5GE2cZ6Ewps1Gms=w675-h390-n-k-no" class="card-img-top" alt="Cuiabá to Primavera do Leste">
-                            <div class="card-body">
-                                <h5 class="card-title">Cuiabá, MT → Primavera do Leste, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipPKHL4cBZz160xfQl_9UHLfc9Tmjx_q3Fb0KL5P=w675-h390-n-k-no" class="card-img-top" alt="Nobres to Sinop">
-                            <div class="card-body">
-                                <h5 class="card-title">Nobres, MT → Sinop, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSllQqn_PXGcpMI6Lnkkg0f8w35-N0X6WQJxx7kavOvAGe9vMmTGKOefCkPQNsqTDklTL-f5O5pM5g571aCl-v2_p5LR35waSDeupXf2A" class="card-img-top" alt="Cuiabá to Alto Araguaia">
-                            <div class="card-body">
-                                <h5 class="card-title">Cuiabá, MT → Alto Araguaia, MT</h5>
-                                <p class="card-text text-muted small">A "card" is a UI design pattern that groups related information in a flexible-size container visually resembling a playing card.</p>
-                                <button class="btn btn-primary w-100">Reservar</button>
+                                <p class="card-text text-muted small">Viagem confortável entre a capital e uma das
+                                    cidades mais importantes do norte do estado.</p>
+                                <button class="btn btn-primary w-100" data-origem="Cuiabá, MT"
+                                    data-destino="Sinop, MT">Reservar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Ticket Listings -->
             <div id="ticket-listings" class="row row-cols-1 row-cols-md-3 g-4"></div>
@@ -165,11 +156,13 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <!-- Feather Icons Initialization -->
     <script>
         feather.replace();
     </script>
     <script src="/Assets/js/dashboard.js"></script>
 </body>
+
 </html>
