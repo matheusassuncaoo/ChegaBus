@@ -5,14 +5,23 @@ const botaoLoginGoogle = document.querySelector('.loginButton');
 const botaoLogin = document.querySelector('.btn-primary'); // Botão "Entrar"
 const formularioLogin = document.querySelector('.fakeLoginForm');
 
-// Alterna a visibilidade da senha
-botaoAlternarSenha.addEventListener('click', () => {
-    const senhaVisivel = campoSenha.getAttribute('type') === 'password';
-    campoSenha.setAttribute('type', senhaVisivel ? 'text' : 'password');
-    // Alterna o ícone do botão
-    const icone = botaoAlternarSenha.querySelector('i');
-    icone.classList.toggle('bi-eye');
-    icone.classList.toggle('bi-eye-slash');
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Feather Icons
+    feather.replace();
+
+    // Alterna a visibilidade da senha
+    botaoAlternarSenha.addEventListener('click', () => {
+        const senhaVisivel = campoSenha.getAttribute('type') === 'password';
+        campoSenha.setAttribute('type', senhaVisivel ? 'text' : 'password');
+        
+        // Atualiza o ícone do botão usando Feather Icons
+        const icone = botaoAlternarSenha.querySelector('i');
+        if (senhaVisivel) {
+            feather.replace(icone, { class: 'feather-eye' });
+        } else {
+            feather.replace(icone, { class: 'feather-eye-slash' });
+        }
+    });
 });
 
 // Simula o login com o Google
