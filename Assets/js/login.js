@@ -16,10 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Atualiza o ícone do botão usando Feather Icons
         const icone = botaoAlternarSenha.querySelector('i');
-        if (senhaVisivel) {
-            feather.replace(icone, { class: 'feather-eye' });
+        if (campoSenha.type === 'password') {
+            campoSenha.type = 'text';
+            this.innerHTML = '<i data-feather="eye-off"></i>';
         } else {
-            feather.replace(icone, { class: 'feather-eye-slash' });
+            campoSenha.type = 'password';
+            this.innerHTML = '<i data-feather="eye"></i>';
         }
     });
 });
