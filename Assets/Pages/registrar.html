@@ -44,7 +44,7 @@
 
             <div class="mb-3">
                 <small class="text-muted">
-                    Ao marcar a caixa você concorda com nossos <a href="#" class="text-decoration-none">Termos e
+                    Ao marcar a caixa você concorda com nossos <a href="https://policies.google.com/terms?hl=pt-BR" class="text-decoration-none">Termos e
                         Condições</a>
                 </small>
             </div>
@@ -53,7 +53,7 @@
 
             <button type="button"
                 class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2">
-                <img src="../images/google-icon.png" alt="Google" width="20" height="20">
+                <img src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw" alt="Google" width="20" height="20">
                 <span>Ou faça login com o Google</span>
             </button>
         </form>
@@ -74,13 +74,42 @@
             const password = document.getElementById('password');
             if (password.type === 'password') {
                 password.type = 'text';
-                this.innerHTML = '<i data-feather="eye-off"></i>';
+                this.innerHTML = '<i data-feather="eye"></i>';
             } else {
                 password.type = 'password';
-                this.innerHTML = '<i data-feather="eye"></i>';
+                this.innerHTML = '<i data-feather="eye-off"></i>';
             }
             feather.replace();
         });
+
+         // Lógica para o botão "Ou faça login com o Google"
+    const googleBtn = document.querySelector('.btn.btn-outline-secondary.w-100.d-flex');
+    googleBtn.addEventListener('click', function () {
+        alert('Redirecionando para login com o Google...');
+        // Abre a página de login do Google
+        window.location.href = 'https://accounts.google.com/signin';
+    });
+
+    // Lógica para o formulário (botão "Próximo")
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
+
+        // Coleta os valores dos campos
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Verifica se todos os campos foram preenchidos
+        if (email === '' || phone === '' || password === '') {
+            alert('Preencha todos os campos!');
+            return;
+        }
+
+        alert('Cadastrado e logado com sucesso!');
+        // Redireciona para o dashboard
+        window.location.href = './dashboard.html';
+    });
     </script>
 </body>
 

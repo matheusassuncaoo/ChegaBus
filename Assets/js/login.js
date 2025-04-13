@@ -6,23 +6,20 @@ const botaoLogin = document.querySelector('.btn-primary'); // Botão "Entrar"
 const formularioLogin = document.querySelector('.fakeLoginForm');
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Feather Icons
+    // Inicializa os Feather Icons
     feather.replace();
 
-    // Alterna a visibilidade da senha
-    botaoAlternarSenha.addEventListener('click', () => {
-        const senhaVisivel = campoSenha.getAttribute('type') === 'password';
-        campoSenha.setAttribute('type', senhaVisivel ? 'text' : 'password');
-        
-        // Atualiza o ícone do botão usando Feather Icons
-        const icone = botaoAlternarSenha.querySelector('i');
+    // Alterna a visibilidade da senha e atualiza o ícone
+    botaoAlternarSenha.addEventListener('click', function() {
         if (campoSenha.type === 'password') {
             campoSenha.type = 'text';
-            this.innerHTML = '<i data-feather="eye-off"></i>';
+            this.innerHTML = '<i data-feather="eye"></i>';
         } else {
             campoSenha.type = 'password';
-            this.innerHTML = '<i data-feather="eye"></i>';
+            this.innerHTML = '<i data-feather="eye-off"></i>';
         }
+        // Reexecuta o feather.replace para atualizar os ícones
+        feather.replace();
     });
 });
 
@@ -42,7 +39,7 @@ botaoLogin.addEventListener('click', (event) => {
         ease: 'power2.in',
         onComplete: () => {
             alert('Login bem-sucedido! Redirecionando para o dashboard...');
-            window.location.href = './dashboard.html'; // Substitua pelo caminho real do dashboard
+            window.location.href = './dashboard.html'; 
         }
     });
 });
